@@ -7,7 +7,7 @@
             <div class="d-flex justify-content-center w-100 flex-wrap">
                 <div class="category-card me-3 mt-5 rounded-3 mb-3" style="width: 125px; height: 125px;" v-for="categories in arrCategories" :key="categories.id">
                     <router-link :to="{ name: 'categories', params: { slug: categories.slug } }">
-                        <img :src="'storage/' + categories.image" onerror="this.src='storage/placeholder.jpeg';" alt="category" class="category-img rounded-3">
+                        <img :src="'storage/' + categories.image" onerror="this.src='../../../storage/placeholder.jpeg';" alt="category" class="category-img rounded-3">
                     </router-link>
                     <div class="text-dark fs-4 text-center">{{ categories.name }}</div>
                 </div>
@@ -19,7 +19,7 @@
                         <div class="rounded-4 mb-4 me-4 mycard" style="width: 14rem; height: 28rem;"
                             v-for="user in arrUsers" :key="user.id"
                         >
-                            <img :src="'storage/' + user.logo_image" alt="logo" onerror="this.src='storage/placeholder.jpeg';"
+                            <img :src="'storage/' + user.logo_image" alt="logo" onerror="this.src='../../../storage/placeholder.jpeg';"
                             class="rounded-4" style="width: 100%; height: 50%">
                             <div class="mx-4">
                                 <h5 class="tetx-center">{{ user.name }}</h5>

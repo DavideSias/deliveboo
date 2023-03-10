@@ -20,9 +20,11 @@ Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('r
 
 Auth::routes();
 
-Route::get('/', function () {
-    return view('guest.home');
-});
+// Route::get('/', function () {
+//     return view('guest.home');
+// });
+
+
 
 
 Route::middleware('auth')
@@ -91,4 +93,7 @@ Route::post('/payment/checkout', function (Request $request) {
     }
   });
 
+Route::get('{any?}', function (){
+    return view('guest.home');
+})->where("any", ".*")->name('guest.home');
 

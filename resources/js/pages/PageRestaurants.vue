@@ -23,7 +23,7 @@
                         <div class="rounded-4 mb-4 me-4 mycard" style="width: 14rem; height: 27rem;"
                             v-for="user in arrUsers" :key="user.id"
                         >
-                            <img :src="'storage/' + user.logo_image" alt="logo" onerror="this.src='storage/placeholder.jpeg';"
+                            <img :src="'storage/' + user.logo_image" alt="logo" onerror="this.src='../../../storage/placeholder.jpeg';"
                             class="rounded-4" style="width: 100%; height: 50%">
                             <div class="mx-4">
                                 <h5 class="tetx-center">{{ user.name }}</h5>
