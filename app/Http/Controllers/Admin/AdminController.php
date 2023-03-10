@@ -44,14 +44,15 @@ class AdminController extends Controller
             'name' => 'required|string|max:50',
             'address' => 'required|string|max:50',
             'vat_number' => 'required|numeric|digits:11',
-            'logo_image' => 'required|file|mimes:jpg,jpeg,png,gif,webp|max:1024',
-            'cover_image' => 'required|file|mimes:jpg,jpeg,png,gif,webp|max:1024',
+            'logo_image' => 'file|mimes:jpg,jpeg,png,gif,webp|max:1024',
+            'cover_image' => 'file|mimes:jpg,jpeg,png,gif,webp|max:1024',
         ]);
 
-        $logo_path = Storage::put('uploads', $request['logo_image']);
-        $cover_path = Storage::put('uploads', $request['cover_image']);
-
         $user = Auth::user();
+
+        $logo_path = isset($request['logo_image']) ? Storage::put('uploads', $request['logo_image']) : $user->logo_image;
+        $cover_path = isset($request['cover_image']) ? Storage::put('uploads', $request['cover_image']) : $user->cover_image;
+
         $user->name = $request['name'];
         $user->address = $request['address'];
         $user->vat_number = $request['vat_number'];

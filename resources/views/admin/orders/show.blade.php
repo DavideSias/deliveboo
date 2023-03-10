@@ -11,6 +11,7 @@
                         <div class="fs-4">Email utente: <span class="fs-5 text-secondary">{{$order->email_user}}</span></div>
                         <div class="fs-4">Indirizzo: <span class="fs-5 text-secondary">{{$order->address}}</span></div>
                         <div class="fs-4">Effettuato il: <span class="fs-5 text-secondary">{{$order->created_at}}</span></div>
+                        <div class="fs-4">Totale ordine: <span class="fs-5 text-secondary">{{$order->tot_price}}&euro;</span></div>
                     </div>
                     <div class="col-6 lh-base p-2 cont-sec">
                         <h4>Piatti ordinati</h4>

@@ -15,7 +15,7 @@ class DishController extends Controller
         'name'        => 'required|max:50|string',
         'price'       => 'required|numeric|between:0.00,9999.99',
         'description' => 'required|string',
-        'image'       => 'required|file|mimes:jpg,jpeg,png,gif,webp|max:1024',
+        'image'       => 'file|mimes:jpg,jpeg,png,gif,webp|max:1024',
     ];
 
     // TODO: cambiare il sistema di caricamento delle immagini
@@ -52,7 +52,7 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
-
+        $this->validations['image'] = 'required|file|mimes:jpg,jpeg,png,gif,webp|max:1024';
         $request->validate($this->validations);
         $data = $request->all();
 
@@ -112,7 +112,8 @@ class DishController extends Controller
         $request->validate($this->validations);
         $data = $request->all();
 
-        $img_path = Storage::put('uploads', $data['image']);
+        $img_path = isset($data['image']) ? Storage::put('uploads', $data['image']) : $dish->image;
+
         $dish->user_id = Auth::user()->id;
         $dish->name = $data['name'];
         $dish->price = $data['price'];

@@ -78,9 +78,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
-        $logo_path = Storage::put('uploads', $data['logo_image']);
-        $cover_path = Storage::put('uploads', $data['cover_image']);
+        $logo_path = isset($data['logo_image']) ? Storage::put('uploads', $data['logo_image']) : 'uploads/placeholder.jpeg';
+        $cover_path = isset($data['cover_image']) ? Storage::put('uploads', $data['cover_image']) : 'uploads/placeholder.jpeg';
 
         $user = User::create([
             'slug' => User::getSlug($data['name']),
@@ -88,8 +87,8 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'vat_number' => $data['vat_number'],
             'email' => $data['email'],
-            'logo_image' => $logo_path ?? NULL,
-            'cover_image' => $cover_path ?? NULL,
+            'logo_image' => $logo_path,
+            'cover_image' => $cover_path,
             'password' => Hash::make($data['password']),
         ]);
 
